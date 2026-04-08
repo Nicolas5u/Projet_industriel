@@ -22,7 +22,7 @@ except Exception as e:
 
 
 try:
-   arduino = serial.Serial('/dev/ttyACM1', 9600, timeout=1)
+   arduino = serial.Serial('/dev/ttyACM1', 9600, timeout=1) # le numéro du port de la carte arduino
    # --- LA CORRECTION EST ICI ---
    print("⏳ Attente de 2 secondes pour le réveil de l'Arduino...")
    time.sleep(2.0)
