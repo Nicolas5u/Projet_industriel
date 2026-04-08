@@ -20,6 +20,9 @@ Il est nécessaire d’imprimer :
 3 : Piece_maintien_seringue.stl  
 4 : Piece_moteur_outil_seringue.stl  
 
+Les pièces sont également visible sur printable :
+https://www.printables.com/model/1675196-piece_support_outil_seringue
+
 <img width="673" height="1214" alt="image" src="https://github.com/user-attachments/assets/8054e74d-f0c6-4af5-a28a-e74bae188ba3" />
 
 
