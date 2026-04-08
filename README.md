@@ -25,10 +25,12 @@ Piece_capteur_outil_seringue.stl
 
 # Test sur la seringue
 
+
 L’objectif est ici de mesurer le volume d’eau à l'intérieur de chaque puits, pour ce faire nous avons positionné la seringue à une hauteur qui restera constante durant toute la durée de l'expérience. Il nous a alors suffit d’utiliser la fonction remplissage de puits qui actionne le moteur jusqu’à temps que le sensor envoie une valeur supérieure à celle prédéfinie.
 
 Il est important de noter que certains biais ont été remarqués comme une goutte d’eau qui serait restée au niveau de la seringue.
 
+<img width="977" height="787" alt="image" src="https://github.com/user-attachments/assets/32aeaf63-75d9-49fc-b9c6-f2c9bca0c253" />
 
 # Code
 Première utilisation de l’outil seringue 
