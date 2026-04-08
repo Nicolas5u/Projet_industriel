@@ -31,11 +31,11 @@ Il est nécessaire d’imprimer :
 # Test sur la seringue
 
 
-L’objectif est ici de mesurer le volume d’eau à l'intérieur de chaque puits, pour ce faire nous avons positionné la seringue à une hauteur qui restera constante durant toute la durée de l'expérience. Il nous a alors suffit d’utiliser la fonction remplissage de puits qui actionne le moteur jusqu’à temps que le sensor envoie une valeur supérieure à celle prédéfinie.
+L’objectif est ici de mesurer le volume d’eau à l'intérieur de chaque puits, pour ce faire nous avons positionné la seringue à une hauteur qui restera constante durant toute la durée de l'expérience. Il nous a alors suffit d’utiliser la fonction remplissage de puits qui actionne le moteur jusqu’à temps que le sensor envoie une valeur supérieure à celle prédéfinie.  
 <img width="368" height="449" alt="image" src="https://github.com/user-attachments/assets/5bbc1ea6-3e26-42da-b8cd-c36d9837d7f2" />
 
 
-Il est important de noter que certains biais ont été remarqués comme une goutte d’eau qui serait restée au niveau de la seringue.
+Il est important de noter que certains biais ont été remarqués comme une goutte d’eau qui serait restée au niveau de la seringue.  
 <img width="346" height="438" alt="image" src="https://github.com/user-attachments/assets/6ed9ad59-a9c4-4399-a6fb-676b2aaf646a" />
 
 <img width="926" height="682" alt="image" src="https://github.com/user-attachments/assets/37f06334-5e64-483d-9113-9adcc12cb953" />
