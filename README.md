@@ -1,6 +1,36 @@
 # Projet_industriel
 Ce projet est un projet étudiant en lien avec l'entreprise Sony CSL
 
+# Montage outil Seringue
+
+L’outil Seringue à pour objectif de rendre la jubilee capable d'utiliser une seringue automatiquement, rendant notamment capable d'obtenir une quantité constante d’eau dans les puits d’une plaque multi-puits. Les problématique de contamination des liquides ne sont pas prises en compte dans cette solution.
+
+D’un point de vue mécanique nous avons une pièce support qui permet de fixer le moteur permettant un effort vertical sur la seringue. La deuxième pièce fixée à la première permet de fixer la partie extérieur de la seringue au support et de fixer le capteur de liquide.
+
+Montage
+Piece_support_outil_seringue : à faire
+
+Piece_capteur_outil_seringue : à faire
+
+Electronique : nous avons utilisé une rasbaerry pi connecté à un driver mjkdz pour alimenter et contrôler le moteur. Le capteur de liquide est directement connecté à une arduino (utilisé en tant que convertisseur analogique numérique).
+Le MJDKZ motor driver module sert principalement à contrôler facilement la vitesse (permet d’augmenter ou diminuer la vitesse du moteur, d’avoir un contrôle souple et précis) et le sens d’un moteur DC (pont en h) à partir d’un microcontrôleur, tout en lui fournissant l’alimentation appropriée (externe à la arduino) et en le protégeant (de surtensions, pics de courant, parasites électriques).
+Le capteur de niveau de liquide sert principalement à détecter la présence et mesurer la profondeur d'un fluide (jusqu'à 48 mm) à partir d'un microcontrôleur disposant d'une entrée analogique, tout en offrant une lecture continue (grâce à un circuit d'amplification par transistor générant une tension proportionnelle à l'immersion) utilisable pour concevoir facilement des systèmes d'alarme ou de surveillance de niveau.
+
+Il est nécessaire d’acheter le moteur : 
+https://www.amazon.fr/Actuator-electronic-controller-EKFBQBGW-5V-50mm-15N/dp/B0D9RP563V?th=1&psc=1
+Il est nécessaire d’imprimer : 
+Piece_support_outil_seringue.stl
+Piece_capteur_outil_seringue.stl
+
+
+# Test sur la seringue
+
+L’objectif est ici de mesurer le volume d’eau à l'intérieur de chaque puits, pour ce faire nous avons positionné la seringue à une hauteur qui restera constante durant toute la durée de l'expérience. Il nous a alors suffit d’utiliser la fonction remplissage de puits qui actionne le moteur jusqu’à temps que le sensor envoie une valeur supérieure à celle prédéfinie.
+
+Il est important de noter que certains biais ont été remarqués comme une goutte d’eau qui serait restée au niveau de la seringue.
+
+
+# Code
 Première utilisation de l’outil seringue 
 
 -> allumer raspi + machine Jubilee
