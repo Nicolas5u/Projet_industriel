@@ -143,58 +143,58 @@ It is important to note that some biases were noticed, such as a drop of water t
 
 
 # Code
-First use of the syringe tool 
+First use of the syringe tool  
 
--> turn on raspi + Jubilee machine
--> connect to wifi: CSLToi
--> in a browser's search bar: [http://jubilee.local/](http://jubilee.local/) or [http://10.0.9.6/](http://10.0.9.6/)
--> Home the machine to check that everything is fine (dashboard button "Home All" / "Tout aux origines")
+-> turn on raspi + Jubilee machine  
+-> connect to wifi: CSLToi  
+-> in a browser's search bar: [http://jubilee.local/](http://jubilee.local/) or [http://10.0.9.6/](http://10.0.9.6/)  
+-> Home the machine to check that everything is fine (dashboard button "Home All" / "Tout aux origines")  
 
-Clone the repo [https://github.com/corset-damien/science-jubilee](https://github.com/corset-damien/science-jubilee)
+Clone the repo [https://github.com/corset-damien/science-jubilee](https://github.com/corset-damien/science-jubilee)  
  
-Install conda (cleaner with the link than with a terminal command):
-[https://docs.conda.io/projects/conda/en/stable/user-guide/install/windows.html](https://docs.conda.io/projects/conda/en/stable/user-guide/install/windows.html)
+Install conda (cleaner with the link than with a terminal command):  
+[https://docs.conda.io/projects/conda/en/stable/user-guide/install/windows.html](https://docs.conda.io/projects/conda/en/stable/user-guide/install/windows.html)  
 
--> navigate into the sciencejubilee folder
-->conda create -n jubilee26 python=3.9
-->conda activate jubilee26
+-> navigate into the sciencejubilee folder  
+-> conda create -n jubilee26 python=3.9  
+-> conda activate jubilee26  
 
-->conda install conda-forge::jupyterlab
-->jupyter lab
+-> conda install conda-forge::jupyterlab  
+-> jupyter lab
 
 
-Using the syringe tool
+Using the syringe tool  
 
 Once the initial connection steps are completed, the syringe tool is used by running the server which sends the sensor data and receives the instruction for the motor that actuates the syringe.
 
 In a terminal:
--> ssh jubilee@10.0.9.55
-the password is requested: projet_indus
--> python serveur_pi.py
+-> ssh jubilee@[IP]
+the password is requested: [..]  
+-> python serveur_pi.py  
 
-In a terminal (at the science jubilee level):
-->conda activate jubilee26
-->jupyter lab
+In a terminal (at the science jubilee level):  
+-> conda activate jubilee26  
+-> jupyter lab  
 
-Go to the web interface
-Navigate to the directory science-jubilee/src/science_jubilee/a_netbookTest/test_ser.ipynb 
-
-
-Modifying a file in the Raspberry Pi's memory space
-
-If modifying the file, it is recommended to use vscode with its remote - ssh extension. The command and password to connect remain the same. It is then easy to open the home/jubilee folder which contains all the codes that are in the Raspberry Pi's memory space and modify them.
+Go to the web interface  
+Navigate to the directory science-jubilee/src/science_jubilee/a_netbookTest/test_ser.ipynb  
 
 
-Using the test_ser.ipynb code
+Modifying a file in the Raspberry Pi's memory space  
 
-Only two functions are actually for manipulating the syringe tool
--> tool1.remplir_seringue(temps_secondes=10.0)
--> tool1.avancer_jusqu_au_seuil(seuil=1, timeout_sec=5)
-the first one allows filling the syringe for the time indicated in the parameter (a 4-second syringe emptying time is set at the beginning of the function)
-the second one allows emptying the syringe up to a certain threshold level (voltage value easily adjustable with the "python moniteur_capteur.py" file, you must of course have launched the server and be on the CSLToi wifi)
+If modifying the file, it is recommended to use vscode with its remote - ssh extension. The command and password to connect remain the same. It is then easy to open the home/jubilee folder which contains all the codes that are in the Raspberry Pi's memory space and modify them.  
 
 
-Error when using the test_ser.ipynb code
+Using the test_ser.ipynb code  
 
-In case of difficulty with the links (imports cannot be found) run: pip install -e in a terminal at the science jubilee level
+Only two functions are actually for manipulating the syringe tool  
+-> tool1.remplir_seringue(temps_secondes=10.0)  
+-> tool1.avancer_jusqu_au_seuil(seuil=1, timeout_sec=5)  
+the first one allows filling the syringe for the time indicated in the parameter (a 4-second syringe emptying time is set at the beginning of the function)  
+the second one allows emptying the syringe up to a certain threshold level (voltage value easily adjustable with the "python moniteur_capteur.py" file, you must of course have launched the server and be on the CSLToi wifi)  
+
+
+Error when using the test_ser.ipynb code  
+
+In case of difficulty with the links (imports cannot be found) run: pip install -e in a terminal at the science jubilee level  
 
