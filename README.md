@@ -20,10 +20,12 @@ Il est nécessaire d’acheter le moteur :
 https://www.amazon.fr/Actuator-electronic-controller-EKFBQBGW-5V-50mm-15N/dp/B0D9RP563V?th=1&psc=1
 
 Il est nécessaire d’imprimer : 
-Piece_support_outil_seringue.stl
-Piece_capteur_outil_seringue.stl
-Piece_moteur_outil_seringue.stl
-Piece_maintien_seringue.stl
+1 : Piece_support_outil_seringue.stl  
+2 : Piece_capteur_outil_seringue.stl  
+3 : Piece_maintien_seringue.stl  
+4 : Piece_moteur_outil_seringue.stl  
+
+<img width="673" height="1214" alt="image" src="https://github.com/user-attachments/assets/8054e74d-f0c6-4af5-a28a-e74bae188ba3" />
 
 
 # Test sur la seringue
