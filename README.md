@@ -98,3 +98,100 @@ En cas de difficulté dans les liens (les imports sont introuvables) faire : pip
 
 
 
+# Industrial_project
+This project is a student project in collaboration with the company Sony CSL
+
+# Syringe tool assembly
+
+The Syringe tool aims to make the Jubilee capable of using a syringe automatically, notably enabling it to obtain a constant amount of water in the wells of a multi-well plate. Liquid contamination issues are not taken into account in this solution.
+
+From a mechanical point of view, we have a support part that allows the motor to be mounted, providing vertical force on the syringe. The second part, attached to the first one, allows the outer part of the syringe to be fixed to the support and to mount the liquid sensor.
+
+Electronics: we used a Raspberry Pi connected to an mjkdz driver to power and control the motor. The liquid sensor is directly connected to an Arduino (used as an analog-to-digital converter).
+The MJDKZ motor driver module is mainly used to easily control the speed (allows increasing or decreasing the motor speed, providing smooth and precise control) and the direction of a DC motor (H-bridge) from a microcontroller, while providing it with the appropriate power supply (external to the Arduino) and protecting it (from overvoltages, current spikes, and electrical noise).
+The liquid level sensor is mainly used to detect the presence and measure the depth of a fluid (up to 48 mm) from a microcontroller with an analog input, while offering continuous reading (thanks to a transistor amplification circuit generating a voltage proportional to the immersion) usable to easily design alarm or level monitoring systems.
+
+It is necessary to buy the motor: 
+[https://www.amazon.fr/Actuator-electronic-controller-EKFBQBGW-5V-50mm-15N/dp/B0D9RP563V?th=1&psc=1](https://www.amazon.fr/Actuator-electronic-controller-EKFBQBGW-5V-50mm-15N/dp/B0D9RP563V?th=1&psc=1)
+
+It is necessary to print:  
+1 : Piece_support_outil_seringue.stl  
+2 : Piece_capteur_outil_seringue.stl  
+3 : Piece_maintien_seringue.stl  
+4 : Piece_moteur_outil_seringue.stl  
+
+The parts are also visible on Printables:
+[https://www.printables.com/model/1675196-piece_support_outil_seringue](https://www.printables.com/model/1675196-piece_support_outil_seringue)
+
+<img width="673" height="1214" alt="image" src="[https://github.com/user-attachments/assets/8054e74d-f0c6-4af5-a28a-e74bae188ba3](https://github.com/user-attachments/assets/8054e74d-f0c6-4af5-a28a-e74bae188ba3)" />
+
+
+# Syringe test
+
+
+The objective here is to measure the difference in the amount of water dispensed by the syringe tool. To do this, we positioned the syringe at a height that will remain constant throughout the duration of the experiment. We then simply used the well-filling function, which activates the motor until the sensor sends a value higher than the predefined one.  
+<img width="368" height="449" alt="image" src="[https://github.com/user-attachments/assets/5bbc1ea6-3e26-42da-b8cd-c36d9837d7f2](https://github.com/user-attachments/assets/5bbc1ea6-3e26-42da-b8cd-c36d9837d7f2)" />
+
+
+It is important to note that some biases were noticed, such as a drop of water that might have stayed on the syringe tip.  
+<img width="346" height="438" alt="image" src="[https://github.com/user-attachments/assets/6ed9ad59-a9c4-4399-a6fb-676b2aaf646a](https://github.com/user-attachments/assets/6ed9ad59-a9c4-4399-a6fb-676b2aaf646a)" />
+
+<img width="926" height="682" alt="image" src="[https://github.com/user-attachments/assets/37f06334-5e64-483d-9113-9adcc12cb953](https://github.com/user-attachments/assets/37f06334-5e64-483d-9113-9adcc12cb953)" />
+
+
+# Code
+First use of the syringe tool 
+
+-> turn on raspi + Jubilee machine
+-> connect to wifi: CSLToi
+-> in a browser's search bar: [http://jubilee.local/](http://jubilee.local/) or [http://10.0.9.6/](http://10.0.9.6/)
+-> Home the machine to check that everything is fine (dashboard button "Home All" / "Tout aux origines")
+
+Clone the repo [https://github.com/corset-damien/science-jubilee](https://github.com/corset-damien/science-jubilee)
+ 
+Install conda (cleaner with the link than with a terminal command):
+[https://docs.conda.io/projects/conda/en/stable/user-guide/install/windows.html](https://docs.conda.io/projects/conda/en/stable/user-guide/install/windows.html)
+
+-> navigate into the sciencejubilee folder
+->conda create -n jubilee26 python=3.9
+->conda activate jubilee26
+
+->conda install conda-forge::jupyterlab
+->jupyter lab
+
+
+Using the syringe tool
+
+Once the initial connection steps are completed, the syringe tool is used by running the server which sends the sensor data and receives the instruction for the motor that actuates the syringe.
+
+In a terminal:
+-> ssh jubilee@10.0.9.55
+the password is requested: projet_indus
+-> python serveur_pi.py
+
+In a terminal (at the science jubilee level):
+->conda activate jubilee26
+->jupyter lab
+
+Go to the web interface
+Navigate to the directory science-jubilee/src/science_jubilee/a_netbookTest/test_ser.ipynb 
+
+
+Modifying a file in the Raspberry Pi's memory space
+
+If modifying the file, it is recommended to use vscode with its remote - ssh extension. The command and password to connect remain the same. It is then easy to open the home/jubilee folder which contains all the codes that are in the Raspberry Pi's memory space and modify them.
+
+
+Using the test_ser.ipynb code
+
+Only two functions are actually for manipulating the syringe tool
+-> tool1.remplir_seringue(temps_secondes=10.0)
+-> tool1.avancer_jusqu_au_seuil(seuil=1, timeout_sec=5)
+the first one allows filling the syringe for the time indicated in the parameter (a 4-second syringe emptying time is set at the beginning of the function)
+the second one allows emptying the syringe up to a certain threshold level (voltage value easily adjustable with the "python moniteur_capteur.py" file, you must of course have launched the server and be on the CSLToi wifi)
+
+
+Error when using the test_ser.ipynb code
+
+In case of difficulty with the links (imports cannot be found) run: pip install -e in a terminal at the science jubilee level
+
