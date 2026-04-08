@@ -67,10 +67,10 @@ Une fois les étapes de première connexion réalisées, l’utilisation de l’
 
 Dans un terminal:  
 -> ssh jubilee@[adresse IP]
-il est demandé le mot de passe : [mdp]
+il est demandé le mot de passe : [mdp]  
 -> python serveur_pi.py
 
-Dans un terminal (au niveau de science jubilee):
+Dans un terminal (au niveau de science jubilee):  
 -> conda activate jubilee26  
 -> jupyter lab  
 
