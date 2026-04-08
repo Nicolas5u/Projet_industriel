@@ -18,9 +18,12 @@ Le capteur de niveau de liquide sert principalement à détecter la présence et
 
 Il est nécessaire d’acheter le moteur : 
 https://www.amazon.fr/Actuator-electronic-controller-EKFBQBGW-5V-50mm-15N/dp/B0D9RP563V?th=1&psc=1
+
 Il est nécessaire d’imprimer : 
 Piece_support_outil_seringue.stl
 Piece_capteur_outil_seringue.stl
+Piece_moteur_outil_seringue.stl
+Piece_maintien_seringue.stl
 
 
 # Test sur la seringue
