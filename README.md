@@ -124,20 +124,22 @@ It is necessary to print:
 The parts are also visible on Printables:
 [https://www.printables.com/model/1675196-piece_support_outil_seringue](https://www.printables.com/model/1675196-piece_support_outil_seringue)
 
-<img width="673" height="1214" alt="image" src="[https://github.com/user-attachments/assets/8054e74d-f0c6-4af5-a28a-e74bae188ba3](https://github.com/user-attachments/assets/8054e74d-f0c6-4af5-a28a-e74bae188ba3)" />
+<img width="673" height="1214" alt="image" src="https://github.com/user-attachments/assets/8054e74d-f0c6-4af5-a28a-e74bae188ba3" />
 
 
 # Syringe test
 
 
 The objective here is to measure the difference in the amount of water dispensed by the syringe tool. To do this, we positioned the syringe at a height that will remain constant throughout the duration of the experiment. We then simply used the well-filling function, which activates the motor until the sensor sends a value higher than the predefined one.  
-<img width="368" height="449" alt="image" src="[https://github.com/user-attachments/assets/5bbc1ea6-3e26-42da-b8cd-c36d9837d7f2](https://github.com/user-attachments/assets/5bbc1ea6-3e26-42da-b8cd-c36d9837d7f2)" />
+<img width="368" height="449" alt="image" src="https://github.com/user-attachments/assets/5bbc1ea6-3e26-42da-b8cd-c36d9837d7f2" />
 
 
 It is important to note that some biases were noticed, such as a drop of water that might have stayed on the syringe tip.  
-<img width="346" height="438" alt="image" src="[https://github.com/user-attachments/assets/6ed9ad59-a9c4-4399-a6fb-676b2aaf646a](https://github.com/user-attachments/assets/6ed9ad59-a9c4-4399-a6fb-676b2aaf646a)" />
+<img width="346" height="438" alt="image" src="https://github.com/user-attachments/assets/6ed9ad59-a9c4-4399-a6fb-676b2aaf646a" />
 
-<img width="926" height="682" alt="image" src="[https://github.com/user-attachments/assets/37f06334-5e64-483d-9113-9adcc12cb953](https://github.com/user-attachments/assets/37f06334-5e64-483d-9113-9adcc12cb953)" />
+<img width="926" height="682" alt="image" src="https://github.com/user-attachments/assets/37f06334-5e64-483d-9113-9adcc12cb953" />
+
+
 
 
 # Code
