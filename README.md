@@ -7,11 +7,6 @@ L’outil Seringue à pour objectif de rendre la jubilee capable d'utiliser une 
 
 D’un point de vue mécanique nous avons une pièce support qui permet de fixer le moteur permettant un effort vertical sur la seringue. La deuxième pièce fixée à la première permet de fixer la partie extérieur de la seringue au support et de fixer le capteur de liquide.
 
-Montage
-Piece_support_outil_seringue : à faire
-
-Piece_capteur_outil_seringue : à faire
-
 Electronique : nous avons utilisé une rasbaerry pi connecté à un driver mjkdz pour alimenter et contrôler le moteur. Le capteur de liquide est directement connecté à une arduino (utilisé en tant que convertisseur analogique numérique).
 Le MJDKZ motor driver module sert principalement à contrôler facilement la vitesse (permet d’augmenter ou diminuer la vitesse du moteur, d’avoir un contrôle souple et précis) et le sens d’un moteur DC (pont en h) à partir d’un microcontrôleur, tout en lui fournissant l’alimentation appropriée (externe à la arduino) et en le protégeant (de surtensions, pics de courant, parasites électriques).
 Le capteur de niveau de liquide sert principalement à détecter la présence et mesurer la profondeur d'un fluide (jusqu'à 48 mm) à partir d'un microcontrôleur disposant d'une entrée analogique, tout en offrant une lecture continue (grâce à un circuit d'amplification par transistor générant une tension proportionnelle à l'immersion) utilisable pour concevoir facilement des systèmes d'alarme ou de surveillance de niveau.
@@ -19,7 +14,7 @@ Le capteur de niveau de liquide sert principalement à détecter la présence et
 Il est nécessaire d’acheter le moteur : 
 https://www.amazon.fr/Actuator-electronic-controller-EKFBQBGW-5V-50mm-15N/dp/B0D9RP563V?th=1&psc=1
 
-Il est nécessaire d’imprimer : 
+Il est nécessaire d’imprimer :  
 1 : Piece_support_outil_seringue.stl  
 2 : Piece_capteur_outil_seringue.stl  
 3 : Piece_maintien_seringue.stl  
