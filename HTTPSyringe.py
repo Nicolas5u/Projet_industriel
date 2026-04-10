@@ -58,10 +58,10 @@ class HTTPSyringe(Tool):
         try:
             requests.get(f"{self.url_materiel}/capteur", timeout=2)
             self.gpio_disponible = True
-            print(f"[{self.name}] ✅ Connecté au serveur matériel du Raspberry Pi.")
+            print(f"[{self.name}] Connecté au serveur matériel du Raspberry Pi.")
         except requests.exceptions.RequestException:
             self.gpio_disponible = False
-            print(f"[{self.name}] ❌ ERREUR : Impossible de joindre le Pi sur {self.url_materiel}.")
+            print(f"[{self.name}] ERREUR : Impossible de joindre le Pi sur {self.url_materiel}.")
 
     def lire_capteur(self):
         """
