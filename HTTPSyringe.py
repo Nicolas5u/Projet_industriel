@@ -44,9 +44,15 @@ class HTTPSyringe(Tool):
 
     def _init_gpio(self):
         """
-        Initialise l'accès au Pi si ce n'est pas déjà fait.
+        Initialise la connexion réseau avec le serveur matériel du Raspberry Pi.
+        
+        Cette fonction effectue un "ping" (requête GET) vers le Raspberry Pi pour 
+        vérifier s'il est allumé et prêt à recevoir des commandes. Elle met à jour 
+        l'attribut `self.gpio_disponible` en conséquence.
+
+        Auteur : Nicolas Durand (Projet étudiant - Sony CSL)
         """
-        if hasattr(self, "gpio_disponible"):
+        if getattr(self, "gpio_disponible", False):
             return
 
         try:
@@ -59,11 +65,20 @@ class HTTPSyringe(Tool):
 
     def lire_capteur(self):
         """
-        Interroge le Pi pour obtenir la valeur immédiate du capteur.
+        Interroge le Raspberry Pi pour obtenir la valeur immédiate du capteur de liquide.
+        
+        Idéal pour le monitoring en direct ou pour tester le capteur sans activer le moteur.
+
+        Returns:
+            tuple: (tension en Volts, valeur_brute de 0 à 1023). 
+                   Retourne (None, None) en cas d'échec de connexion.
+
+        Auteur : Nicolas Durand (Projet étudiant - Sony CSL)
         """
         self._init_gpio()
         if not getattr(self, "gpio_disponible", False):
             return None, None
+            
         try:
             req = requests.get(f"{self.url_materiel}/capteur", timeout=2)
             reponse = req.json()
@@ -75,6 +90,23 @@ class HTTPSyringe(Tool):
 
     @requires_active_tool
     def avancer_jusqu_au_seuil(self, seuil: float = 1.0, timeout_sec: int = 5):
+        """
+        Descend l'outil vers le réservoir jusqu'à la détection du liquide.
+        
+        Active le moteur en marche avant et interroge en boucle le capteur via le Pi.
+        Dès que la tension lue est supérieure ou égale au seuil, le moteur s'arrête.
+        Intègre une sécurité (timeout) pour éviter le crash physique de l'outil si 
+        le capteur est défaillant ou le réservoir vide.
+
+        Args:
+            seuil (float): La tension cible (en Volts) confirmant la présence de liquide.
+            timeout_sec (int): Temps maximum (en secondes) avant l'arrêt d'urgence.
+
+        Raises:
+            ToolStateError: Si le serveur Raspberry Pi est injoignable avant le mouvement.
+
+        Auteur : Nicolas Durand (Projet étudiant - Sony CSL)
+        """
         self._init_gpio()
         if not getattr(self, "gpio_disponible", False):
             raise ToolStateError("Le serveur Pi n'est pas joignable.")
@@ -102,11 +134,23 @@ class HTTPSyringe(Tool):
                 time.sleep(0.1)
                 
         finally:
+            # Bloc "finally" garantissant l'arrêt du moteur même en cas de crash (Ctrl+C)
             requests.post(f"{self.url_materiel}/moteur", json={"action": "stop"})
             print(f"[{self.name}] Moteur arrêté.")
 
     @requires_active_tool
     def remplir_seringue(self, temps_secondes: float):
+        """
+        Exécute une séquence de purge et de remplissage automatisée de la seringue.
+        
+        1. Marche avant (4s) : Vide l'air ou le liquide résiduel dans le réservoir source.
+        2. Marche arrière (variable) : Aspire le nouveau liquide.
+
+        Args:
+            temps_secondes (float): Durée d'activation du moteur en marche arrière pour l'aspiration.
+
+        Auteur : Nicolas Durand (Projet étudiant - Sony CSL)
+        """
         self._init_gpio()
         if not getattr(self, "gpio_disponible", False):
             raise ToolStateError("Le serveur Pi n'est pas joignable.")
@@ -127,6 +171,13 @@ class HTTPSyringe(Tool):
             self.remaining_volume = self.capacity
 
     def cleanup_gpio(self):
+        """
+        Sécurité logicielle de fin d'utilisation.
+        S'assure que le moteur ne reste pas bloqué en position de marche si le script 
+        principal s'arrête brutalement. À appeler à la toute fin des expériences.
+
+        Auteur : Nicolas Durand (Projet étudiant - Sony CSL)
+        """
         if getattr(self, "gpio_disponible", False):
             try:
                 requests.post(f"{self.url_materiel}/moteur", json={"action": "stop"})
