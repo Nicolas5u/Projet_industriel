@@ -48,7 +48,7 @@ Première utilisation de l’outil seringue
 -> dans la barre de recherche d’un navigateur : http://jubilee.local/ ou  http://10.0.9.6/  
 -> Faire le homing pour vérifier que tout va bien (touche du tableau de bord “ Tout au Origines”)  
 
-Cloner le repo https://github.com/corset-damien/science-jubilee  
+Cloner le repo https://github.com/leosabatie-eng/science-jubilee.git    
  
 Installer conda (plus propre avec le lien qu’avec une commande du terminal) :  
 https://docs.conda.io/projects/conda/en/stable/user-guide/install/windows.html  
@@ -150,7 +150,7 @@ First use of the syringe tool
 -> in a browser's search bar: [http://jubilee.local/](http://jubilee.local/) or [http://10.0.9.6/](http://10.0.9.6/)  
 -> Home the machine to check that everything is fine (dashboard button "Home All" / "Tout aux origines")  
 
-Clone the repo [https://github.com/corset-damien/science-jubilee](https://github.com/corset-damien/science-jubilee)  
+Clone the repo https://github.com/leosabatie-eng/science-jubilee.git  
  
 Install conda (cleaner with the link than with a terminal command):  
 [https://docs.conda.io/projects/conda/en/stable/user-guide/install/windows.html](https://docs.conda.io/projects/conda/en/stable/user-guide/install/windows.html)  
