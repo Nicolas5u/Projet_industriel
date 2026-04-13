@@ -4,16 +4,23 @@ Ce projet est un projet étudiant en lien avec l'entreprise Sony CSL
 
 # Montage outil Seringue
 
-L’outil Seringue a pour objectif de rendre la jubilee capable d'utiliser une seringue automatiquement, rendant notamment capable d'obtenir une quantité constante d’eau dans les puits d’une plaque multi-puits. Les problématiques de contamination des liquides ne sont pas prises en compte dans cette solution.
+L’outil Seringue a pour objectif de rendre la jubilee capable d'utiliser une seringue automatiquement, rendant notamment capable d'obtenir une quantité constante d’eau dans les puits d’une plaque multi-puits (2.5 +- 0.3 ml). Les problématiques de contamination des liquides ne sont pas prises en compte dans cette solution.
 
-D’un point de vue mécanique nous avons une pièce support qui permet de fixer le moteur permettant un effort vertical sur la seringue. La deuxième pièce fixée à la première permet de fixer la partie extérieure de la seringue au support et de fixer le capteur de liquide.
+D’un point de vue mécanique nous avons une pièce support qui permet de fixer le moteur à courant continu permettant un effort vertical sur la seringue. La deuxième pièce fixée à la première permet de fixer la partie extérieure de la seringue au support et de fixer le capteur de liquide.
 
-Electronique : nous avons utilisé une rasbaerry pi connectée à un driver mjkdz pour alimenter et contrôler le moteur. Le capteur de liquide est directement connecté à une arduino (utilisé en tant que convertisseur analogique numérique).
-Le MJDKZ motor driver module sert principalement à contrôler facilement la vitesse (permet d’augmenter ou diminuer la vitesse du moteur, d’avoir un contrôle souple et précis) et le sens d’un moteur DC (pont en h) à partir d’un microcontrôleur, tout en lui fournissant l’alimentation appropriée (externe à la arduino) et en le protégeant (des surtensions, pics de courant, parasites électriques).
+Electronique : nous avons utilisé une raspberry pi connectée à un driver mjkdz pour alimenter et contrôler le moteur à courant continu. Le capteur de liquide est directement connecté à une arduino (utilisé en tant que convertisseur analogique numérique).
+Le MJDKZ motor driver module sert principalement à contrôler facilement la vitesse (permet d’augmenter ou diminuer la vitesse du moteur, d’avoir un contrôle souple et précis) et le sens d’un moteur DC (pont en h) à partir d’un microcontrôleur, tout en lui fournissant l’alimentation appropriée (externe à la carte arduino) et en le protégeant (des surtensions, pics de courant, parasites électriques).
 Le capteur de niveau de liquide sert principalement à détecter la présence et mesurer la profondeur d'un fluide (jusqu'à 48 mm) à partir d'un microcontrôleur disposant d'une entrée analogique, tout en offrant une lecture continue (grâce à un circuit d'amplification par transistor générant une tension proportionnelle à l'immersion) utilisable pour concevoir facilement des systèmes d'alarme ou de surveillance de niveau.
 
-Il est nécessaire d’acheter le moteur : 
-https://www.amazon.fr/Actuator-electronic-controller-EKFBQBGW-5V-50mm-15N/dp/B0D9RP563V?th=1&psc=1
+Il est nécessaire d’acheter le moteur :  
+https://www.amazon.fr/Actuator-electronic-controller-EKFBQBGW-5V-50mm-15N/dp/B0D9RP563V?th=1&psc=1  
+
+Il est nécessaire d’acheter un driver :  
+https://fr.aliexpress.com/item/1005008699170894.html  
+
+Il est nécessaire d’acheter un convertisseur analogique numérique (en remplacement de la carte arduino) :  
+https://fr.aliexpress.com/item/1005007112138921.html  
+
 
 Il est nécessaire d’imprimer :  
 1 : Piece_support_outil_seringue.stl  
@@ -21,7 +28,7 @@ Il est nécessaire d’imprimer :
 3 : Piece_maintien_seringue.stl  
 4 : Piece_moteur_outil_seringue.stl  
 
-Les pièces sont également visible sur Printables :
+Les pièces sont également visibles sur Printables :
 https://www.printables.com/model/1675196-piece_support_outil_seringue
 
 <img width="673" height="1214" alt="image" src="https://github.com/user-attachments/assets/8054e74d-f0c6-4af5-a28a-e74bae188ba3" />
@@ -86,11 +93,11 @@ remote - ssh la commande et le mots de passe pour se connecter reste identique. 
 
 Utilisation du code test_ser.ipynb  
 
-Seul deux fonctions sont réellement pour la manipulation de l’outil seringue  
+Seules deux fonctions sont réellement nécessaires pour la manipulation de l’outil seringue  
 -> tool1.remplir_seringue(temps_secondes=10.0)  
 -> tool1.avancer_jusqu_au_seuil(seuil=1, timeout_sec=5)  
 la première permet de remplir la seringue pendant le temps indiqué en paramètre (il y est fixé un temps de 4 secondes de vidage de la seringue au début de la fonction)  
-la seconde permet de vider la seringue jusqu’à un certain niveau de seuil (valeur en volt facilement réglable avec le fichier “moniteur_capteur.py” il faut bien sur avoir lancer le serveur et être sur le wifi CSL toi)  
+la seconde permet de vider la seringue jusqu’à un certain niveau de seuil (valeur en volt facilement réglable avec le fichier “moniteur_capteur.py” il faut bien sur avoir lancé le serveur et être sur le wifi CSL toi)  
 
 
 Erreur dans l’utilisation du code test_ser.ipynb  
